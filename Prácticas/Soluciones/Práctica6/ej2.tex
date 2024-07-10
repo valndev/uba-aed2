@@ -7,17 +7,17 @@
 \Pre{$\forall i : (1 \leq i < tam(A)) \implies a_{i} < a_{i+1}$ $\land$ low = $0$ $\land$ high = $tam(A)$}
 \begin{algorithmic}[1]
     \If{low $>$ high}
-        \State return false \Comment{Nos pasamos y no encontramos nada}
+        \State res $\gets$ false \Comment{Nos pasamos y no encontramos nada}
     \EndIf
     \State mid $\gets$ (low + high) div 2 \Comment{$O(1)$}
     \State pivote $\gets$ A[mid] \Comment{$O(1)$}
     \If{mid $-$ pivote $>$ 0}
-        \State return ÍndiceEspejo(A, mid+1, high) \Comment{Buscamos a la derecha}
+        \State res $\gets$ ÍndiceEspejo(A, mid+1, high) \Comment{Buscamos a la derecha}
     \EndIf
     \If{mid $-$ pivote $<$ 0}
-        \State return ÍndiceEspejo(A, low, mid-1) \Comment{Buscamos a la izquierda}
+        \State res $\gets$ ÍndiceEspejo(A, low, mid-1) \Comment{Buscamos a la izquierda}
     \EndIf
-    \State return true \Comment{Caso mid-pivote == 0, encontramos una solución}
+    \State res $\gets$ true \Comment{Caso mid-pivote == 0, encontramos una solución}
 \end{algorithmic}
 \Complexity{ \\
 Sea $n=tam(A)$, $a=1$, $b=2$, $f(n) = cte \in \Theta(1)$ \\
