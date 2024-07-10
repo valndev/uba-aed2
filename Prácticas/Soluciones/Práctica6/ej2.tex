@@ -1,3 +1,29 @@
-\section{Ejercicio 2}
+\section{Ejercicio 2: índice espejo}
 
-Pendiente.
+\begin{algorithm}[H]
+\caption{
+        \textbf{ÍndiceEspejo}(\textbf{in} A: arreglo(nat), low: nat, high: nat) $\to$ \textbf{out} res: bool
+}
+\Pre{$\forall i : (1 \leq i < tam(A)) \implies a_{i} < a_{i+1}$ $\land$ low = $0$ $\land$ high = $tam(A)$}
+\begin{algorithmic}[1]
+    \If{low $>$ high}
+        \State return false \Comment{$Nos pasamos y no encontramos nada$}
+    \EndIf
+    \State mid $\gets$ (low + high) div 2 \Comment{$O(1)$}
+    \State pivote $\gets$ A[mid] \Comment{$O(1)$}
+    \If{mid $-$ pivote $>$ 0}
+        \State return ÍndiceEspejo(A, mid+1, high) \Comment{Buscamos a la derecha}
+    \EndIf
+    \If{mid $-$ pivote $<$ 0}
+        \State return ÍndiceEspejo(A, low, mid-1) \Comment{Buscamos a la izquierda}
+    \EndIf
+    \State return true \Comment{Caso mid-pivote == 0, encontramos una solución}
+\end{algorithmic}
+\Complexity{ \\
+Sea $n=tam(A)$, $a=1$, $b=2$, $f(n) = cte \in \Theta(1)$ \\
+$T(n) = T(n/2) + cte$ \\
+$f(n) \in \Theta(n^{log_b(a)}) = \Theta(n^{log_2(1)}) = \Theta(1)$ \\
+$\implies T(n) = \Theta(n^{log_b(a)} log(n)) = \Theta(log(n))$
+}
+\end{algorithm}
+\textbf{Implementación en Go}: \url{https://play.golang.org/p/DdY_WfUMLZD}
