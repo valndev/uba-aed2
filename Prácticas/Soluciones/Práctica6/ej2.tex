@@ -7,7 +7,7 @@
 \Pre{$\forall i : (1 \leq i < tam(A)) \implies a_{i} < a_{i+1}$ $\land$ low = $0$ $\land$ high = $tam(A)$}
 \begin{algorithmic}[1]
     \If{low $>$ high}
-        \State return false \Comment{$Nos pasamos y no encontramos nada$}
+        \State return false \Comment{Nos pasamos y no encontramos nada}
     \EndIf
     \State mid $\gets$ (low + high) div 2 \Comment{$O(1)$}
     \State pivote $\gets$ A[mid] \Comment{$O(1)$}
