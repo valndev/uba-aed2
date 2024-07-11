@@ -17,7 +17,9 @@
     \If{mid $-$ pivote $<$ 0}
         \State res $\gets$ ÍndiceEspejo(A, low, mid-1) \Comment{Buscamos a la izquierda}
     \EndIf
-    \State res $\gets$ true \Comment{Caso mid-pivote == 0, encontramos una solución}
+    \If{mid $-$ pivote $==$ 0}
+        \State res $\gets$ true \Comment{Caso mid-pivote == 0, encontramos una solución}
+    \EndIf
 \end{algorithmic}
 \Complexity{ \\
 Sea $n=tam(A)$, $a=1$, $b=2$, $f(n) = cte \in \Theta(1)$ \\
